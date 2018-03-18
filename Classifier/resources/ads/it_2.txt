@@ -1,0 +1,37 @@
+Co warto wiedzieć?
+
+Ebexo to dostawca wysokiej jakości rozwiązań e-commerce na polskim rynku. Mówiąc najkrócej - tworzymy sklepy internetowe, które świetnie sprzedają.
+
+Miejsce pracy: Wrocław lub zdalnie (cała Polska)
+
+Opis stanowiska:
+        Jaki byłby zakres Twojej pracy?
+Rozwój platformy Ebexo poprzez pisanie nowych funkcjonalności
+Implementacja nowych i konserwacja obecnych integracji platformy z zewnętrznymi firmami (hurtownie, płatności on-line, porównywarki cenowe, kurierzy, marketing, księgowość)
+Obsługa procesu migracji na platformę Ebexo
+Wymagania:
+        Nasze oczekiwania wobec Ciebie?
+
+Dobra znajomość programowania w PHP7 oraz baz danych MySQL
+Znajomość Symfony3, JavaScript i jQuery, Git, HTML5
+ 
+
+       Co mile widzimy?
+Doświadczenie w pisaniu integracji z zewnętrznymi dostawcami (REST API, SOAP, XML, CSV)
+Komercyjne doświadczenie
+Umiejętność tworzenia testów jednostkowych
+Doświadczenie w migracji danych między różnymi platformami e-commerce
+Zainteresowanie branżą e-commerce 
+Oferujemy:
+        Co możemy Ci zaoferować?
+
+Zdecydowanie stałe i stabilne zatrudnienie (b2b/umowa o pracę) 
+Nieformalną atmosferę pracy wśród uśmiechniętych i życzliwych ludzi
+Otwartość na pomysły dla Twojego rozwoju zawodowego
+Współtworzenie jednej z najlepszych platform sklepowych na rynku
+Komfortowe otoczenie pracy w wysokiej klasy biurowcu na wrocławskim rynku (istnieje możliwość pracy zdalnej)
+PHP Developer
+Stargard, Goleniów, Białogard, Kołobrzeg, Koszalin, Police, Szczecin, Szczecinek, Świnoujście, Wałcz, zachodniopomorskie
+Specjalista
+2018-02-15
+Ważna jeszcze 2 dni (do 2018-03-17)

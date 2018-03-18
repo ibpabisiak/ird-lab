@@ -1,0 +1,45 @@
+Agencja zatrudnienia
+nr licencji 3260
+Find your own at
+devire.pl
+Miejsce pracy: Szczecin
+DEMW06282
+Devire to międzynarodowa firma rekrutacyjna, założona w Londynie w 1987 roku. Od 30 lat reprezentujemy wiodących pracodawców na rynku europejskim prowadząc dla nich kompleksowe projekty poszukiwań menedżerów i wyspecjalizowanej kadry.
+
+Poza rekrutacją świadczymy usługi Outsourcingu IT, Pracy Tymczasowej oraz Doradztwa HR. Nasze biura, zlokalizowane są w Warszawie, Wrocławiu, Poznaniu, Katowicach oraz Monachium i Frankfurcie. Jesteśmy częścią Devonshire Investment Group.
+
+.NET Developer
+Twoja przyszła Firma / Your future Company
+Aktualnie na potrzebę jednego z naszych klientów poszukujemy kandydatów na stanowisko programisty C# (.NET) Developera. Na tym stanowisku będziesz odpowiedzialny za tworzenie nowoczesnych produktów IT dla branży LifeCare, oddziałujących na każdego od pacjentów po wysoko wykwalifikowanych specjalistów. Jakość kodu, który będziesz rozwijać, wpłynie nie tylko na proste uzgodnienia wizyt u lekarza, ale także na sytuacje kryzysowe w badaniach medycznych pacjentów przychodzących do szpitala. Dlatego szukamy nie tylko dobrych programistów, ale także osób odpowiedzialnych, które potrafią docenić znaczenie dobrze przetestowanego kodu.
+
+U kandydatów zwracamy uwagę na:
+
+1-3 lata doświadczenia w projektowaniu oprogramowania
+Znajomość najnowszych narzędzi programistycznych, dobrych praktyk i technologii
+Dobrą znajomość koncepcji OOP i wzorców projektowych
+Doświadczenie w pracy w środowiskach Agile (Scrum)
+Wiedzę i doświadczenie w .Net Framework 4.5+, C #, WCF / Web services
+Znajomość rozwoju opartego na testach, testowania jednostkowego i automatyzacji testów
+Mile widziana znajomość Angular, Angular JS, HTML5 i ReST / SOAP
+Dobrą znajomość języka angielskiego i umiejętności komunikacyjne
+Oferujemy:
+
+Konkurencyjne wynagrodzenie
+Kontrakt B2B
+Udział w ciekawych projektach (międzynarodowych)
+Pracę w prawdziwym środowisku Agile
+Wielostopniowe, Continuous Integration
+Pisanie testów jednostkowych
+Ambitną pozycję z dużymi możliwościami rozwoju zawodowego
+Poszerzanie swojej wiedzy w różnych dziedzinach
+Szansę, aby coś zmienić i być częścią czołówki rozwijających się firm i technologii, wymieniając się pomysłami z najlepszymi profesjonalistami
+mwarda@devire.pl
+
+
+
+.NET Developer
+Szczecin, zachodniopomorskie
+Specjalista
+powyżej 15 tys. zł brutto
+13.03.2018
+Ważna jeszcze 28 dni (do 12.04.2018)
