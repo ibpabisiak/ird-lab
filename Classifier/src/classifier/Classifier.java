@@ -50,14 +50,11 @@ public class Classifier extends Application {
     public static int main(String[] args) throws IOException {
         
         
-        Core.execute();        
+        ClassifierCore.execute();    
+        System.exit(0);
         return 0;
+
+//this line open JavaFX windows, should be commented for now        
 //        launch(args);
     }
-    
-    
-    public static void execute() {
-        
-    }
-    
 }

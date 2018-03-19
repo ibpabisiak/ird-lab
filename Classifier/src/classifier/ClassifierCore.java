@@ -16,23 +16,20 @@ import java.util.List;
  *
  * @author bpabisiak
  */
-public class Core {
+public class ClassifierCore {
     
     private static List<String> stopWordsList;
     private static List<List<String>> sjpWordsList;
+    private static final String USER_DIR = System.getProperty("user.dir");
+    
     
     public static void execute() throws IOException {
-        stopWordsList = loadStopWords("C:\\Users\\bpabisiak\\Documents\\NetBeansProjects\\Classifier\\resources\\stopwords.txt");
-        sjpWordsList = loadSjpWords("C:\\Users\\bpabisiak\\Documents\\NetBeansProjects\\Classifier\\resources\\sjp.txt");
+        stopWordsList = loadStopWords(USER_DIR + "\\resources\\stopwords.txt");
+        sjpWordsList = loadSjpWords(USER_DIR + "\\resources\\sjp.txt");
 
-
-
-        //TODO parsowanie
         Classification cls1 = new Classification(stopWordsList, sjpWordsList);
-        cls1.loadFiles("C:\\Users\\bpabisiak\\Documents\\NetBeansProjects\\Classifier\\resources\\ads\\it_1.txt", 
-                "C:\\Users\\bpabisiak\\Documents\\NetBeansProjects\\Classifier\\resources\\ads\\it_2.txt");
-        
-        System.out.println("Hello World!");     
+        cls1.loadAndParseFiles(USER_DIR + "\\resources\\job_ads\\it_1.txt", 
+                USER_DIR + "\\resources\\job_ads\\it_2.txt");
     }
     
     private static  List<List<String>> loadSjpWords(String sjpWordsPath) throws FileNotFoundException, IOException {
@@ -75,7 +72,6 @@ public class Core {
         
         return result;
     }
-    
     private static List<String> loadStopWords(String stopWordsPath) throws FileNotFoundException, IOException {
         
         List<String> result = new ArrayList<String>();

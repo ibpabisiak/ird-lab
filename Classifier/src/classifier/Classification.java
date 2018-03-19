@@ -23,24 +23,29 @@ public class Classification {
     private List<String> stopWordsList;
     private List<List<String>> sjpWordsList;
     
-
     public Classification(List<String> stopWordsList, List<List<String>> sjpWordsList) {
         this.stopWordsList = stopWordsList;
         this.sjpWordsList = sjpWordsList;
     }
     
-    public void loadFiles(String firstFilePath, String secondFilePath) throws FileNotFoundException, IOException {
+    public void loadAndParseFiles(String firstFilePath, String secondFilePath) throws FileNotFoundException, IOException {
         firstFileWordsList = loadAndParseFile(firstFilePath);
-//        secondFileWordsList = loadAndParseFile(secondFilePath);
-
+        secondFileWordsList = loadAndParseFile(secondFilePath);   
         
-        for(String w : firstFileWordsList) {
+        System.out.println("done");
+
+        //debug code, print tokes of first file
+        for(String w : secondFileWordsList) {
             System.out.println("W:\t" + w);
         }
         
     }   
     
-    //TODO this method is not ready yet
+    /**
+     * @param firstFilePath - file path to the input file
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     private List<String> loadAndParseFile(String firstFilePath) throws FileNotFoundException, IOException {
         
         List<String> result = new ArrayList<String>();
@@ -56,19 +61,50 @@ public class Classification {
                 sb.append(System.lineSeparator());
                 line = br.readLine();
 
-
                 if(line != null) {
                     String[] splitted = line.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");                
                     for(String word : splitted) {
-                        result.add(word);
+
+                        //check stop words
+                        boolean isStopWord = false;
+                        for(String stopWord : stopWordsList) {
+                            if(stopWord.equalsIgnoreCase(word)) {
+                                isStopWord = true;
+                                break;
+                            }
+                        }
+
+                        //create tokens
+                        if(!isStopWord) {
+                            for(List<String> sjpWords : sjpWordsList) {
+                                String token = "";
+                                boolean isReplaced = false;
+                                for(String sjpWord : sjpWords) {
+                                    if(sjpWord.equalsIgnoreCase(word)) {
+                                        token = sjpWords.get(0);
+//                                        System.out.println(word + " : " + token);
+                                        result.add(token);
+                                        isReplaced = true;
+                                        break;
+                                    }
+                                }
+                                if(isReplaced) {
+                                    break;
+                                }
+                            }
+                        }
                     }                    
                 }
             }
-            String everything = sb.toString();
         } finally {
             br.close();
         }        
         
         return result;
     }
+
+    public float checkFile(String filePath) {
+        return (float) 0.0;
+    }
+
 }
