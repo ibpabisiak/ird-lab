@@ -10,15 +10,25 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author bpabisiak
  */
 public class Classification {
-    private List<String> firstFileWordsList;
-    private List<String> secondFileWordsList;
+    private List<String> firstFileTokens;
+    private Map<String, Float> firstFileVector;
+    
+    private List<String> secondFileTokens;
+    private Map<String, Float> secondFileVector;
+    
+    private Map<String, Float> commonWordsList;
     
     private List<String> stopWordsList;
     private List<List<String>> sjpWordsList;
@@ -29,17 +39,62 @@ public class Classification {
     }
     
     public void loadAndParseFiles(String firstFilePath, String secondFilePath) throws FileNotFoundException, IOException {
-        firstFileWordsList = loadAndParseFile(firstFilePath);
-        secondFileWordsList = loadAndParseFile(secondFilePath);   
+        firstFileTokens = loadAndParseFile(firstFilePath);
+        firstFileVector = prepareFileVector(firstFileTokens);
+        
+        secondFileTokens = loadAndParseFile(secondFilePath); 
+        secondFileVector = prepareFileVector(secondFileTokens);
+        
+        commonWordsList = prepareCommonWordsMap();
+        
         
         System.out.println("done");
 
-        //debug code, print tokes of first file
-        for(String w : secondFileWordsList) {
-            System.out.println("W:\t" + w);
-        }
+//        //debug code, print tokes of first file
+//        for(String w : secondFileWordsList) {
+//            System.out.println("W:\t" + w);
+//        }
         
     }   
+    
+    
+    private Map<String, Float> prepareFileVector(List<String> tokens) {
+        Map<String, Float> result = new HashMap<String, Float>();
+        
+        if(null != tokens) {
+            for(String t : tokens) {
+                result.put(t, ((float)Collections.frequency(tokens, t) / (float)tokens.size()));
+            }
+        }
+        
+        return result;
+    }
+    
+    private Map<String, Float> prepareCommonWordsMap() {
+        Map<String, Float> result = new HashMap<String, Float>();
+        
+        if(null != firstFileTokens && null != secondFileTokens) {
+            
+            int i = 0;
+            
+            for(String w : firstFileTokens) {
+                result.put(w, (float)0.0);
+                i++;
+            }
+//            System.out.println("ADDED first iteration: " + i);
+            
+            for(String w : secondFileTokens) {
+                result.put(w, (float)0.0);
+                i++;
+            }
+
+            
+//            System.out.println("MAP SIZE: " + result.size());
+//            System.out.println("WORDS COUNT: " + i);
+        }
+        
+        return result;  
+    }
     
     /**
      * @param firstFilePath - file path to the input file
