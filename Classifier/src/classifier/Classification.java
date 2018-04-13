@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import static java.lang.Math.sqrt;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,7 +29,14 @@ public class Classification {
     private List<String> secondFileTokens;
     private Map<String, Float> secondFileVector;
     
+    private List<String> fileToCategorizeTokens;
+    private Map<String, Float> fileToCategoizeVector;
+    
+
+
     private Map<String, Float> commonWordsList;
+    
+
     
     private List<String> stopWordsList;
     private List<List<String>> sjpWordsList;
@@ -38,35 +46,101 @@ public class Classification {
         this.sjpWordsList = sjpWordsList;
     }
     
-    public void loadAndParseFiles(String firstFilePath, String secondFilePath) throws FileNotFoundException, IOException {
+    public void loadAndParseFiles(String firstFilePath, String secondFilePath, String fileToCategorize) throws FileNotFoundException, IOException {
+
         firstFileTokens = loadAndParseFile(firstFilePath);
-        firstFileVector = prepareFileVector(firstFileTokens);
-        
         secondFileTokens = loadAndParseFile(secondFilePath); 
-        secondFileVector = prepareFileVector(secondFileTokens);
+        fileToCategorizeTokens = loadAndParseFile(fileToCategorize);
         
         commonWordsList = prepareCommonWordsMap();
         
+        firstFileVector = prepareFileVector(firstFileTokens);
+        secondFileVector = prepareFileVector(secondFileTokens);
+        fileToCategoizeVector = prepareFileVector(fileToCategorizeTokens);
         
-        System.out.println("done");
-
-//        //debug code, print tokes of first file
-//        for(String w : secondFileWordsList) {
-//            System.out.println("W:\t" + w);
-//        }
+        float val1 = cosinus(fileToCategoizeVector, firstFileVector);
+        float val2 = cosinus(fileToCategoizeVector, secondFileVector);
+        System.out.println("PODOBIENSTWO:\t" + (float)((val1+val2) / 2));      
+        
         
     }   
     
     
+    /**
+     * 
+     * @param t dokument tekstowy (wektor)
+     * @param tw predefiniowany dokument tekstowy (wektor)
+     * @return 
+     */
+    private Float cosinus(Map<String, Float> t, Map<String, Float> tw) {
+        Float result = (float)0;
+        
+        List<Float> t2 = new ArrayList<Float>();
+        List<Float> tw2 = new ArrayList<Float>();
+        
+        Iterator it = t.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            t2.add((Float) pair.getValue());
+        }  
+        
+        it = tw.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            tw2.add((Float) pair.getValue());
+        } 
+        
+        float suma1 = (float)0;
+        for(int i = 0; i < t2.size(); i++) {
+//            System.out.println("val: " + t2.get(i));
+            suma1 += (float)((float)t2.get(i) * (float)tw2.get(i));
+        }
+        
+        float suma2 = (float)0;
+        for(int i = 0; i < t2.size(); i++) {
+            suma2 += (float)((float)t2.get(i) * (float)t2.get(i));
+        }
+        suma2 = (float) sqrt(suma2);
+        
+        
+        float suma3 = (float)0;
+        for(int i = 0; i < t2.size(); i++) {
+            suma3 += (float)((float)tw2.get(i) * (float)tw2.get(i));
+        }
+        suma3 = (float) sqrt(suma3);
+        
+        
+        
+        
+        return (float)(suma1 / (float)(suma2 * suma3));
+    }
+    
     private Map<String, Float> prepareFileVector(List<String> tokens) {
         Map<String, Float> result = new HashMap<String, Float>();
         
-        if(null != tokens) {
-            for(String t : tokens) {
-                result.put(t, ((float)Collections.frequency(tokens, t) / (float)tokens.size()));
+        Iterator it = commonWordsList.entrySet().iterator();
+        
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+//            System.out.println(pair.getKey() + " = " + pair.getValue());
+            
+            int i = 0;
+            for(String w : tokens) {
+                if(w.equals(pair.getKey()))
+                    i++;
             }
+            result.put(pair.getKey().toString(), ((float)i / (float)tokens.size()));
+            
         }
         
+//        if(null != tokens) {
+//            for(String t : tokens) {
+//                result.put(t, ((float)Collections.frequency(tokens, t) / (float)tokens.size()));
+//            }
+//        }
+        
+        
+        System.out.println("MAP: " + result.size());
         return result;
     }
     
@@ -84,6 +158,11 @@ public class Classification {
 //            System.out.println("ADDED first iteration: " + i);
             
             for(String w : secondFileTokens) {
+                result.put(w, (float)0.0);
+                i++;
+            }
+            
+            for(String w : fileToCategorizeTokens) {
                 result.put(w, (float)0.0);
                 i++;
             }
