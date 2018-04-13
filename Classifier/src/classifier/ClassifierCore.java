@@ -29,7 +29,16 @@ public class ClassifierCore {
 
         Classification cls1 = new Classification(stopWordsList, sjpWordsList);
         cls1.loadAndParseFiles(USER_DIR + "\\resources\\job_ads\\it_1.txt", 
-                USER_DIR + "\\resources\\job_ads\\it_2.txt");
+                USER_DIR + "\\resources\\job_ads\\it_2.txt", 
+                USER_DIR + "\\resources\\job_ads\\it_3.txt");
+        
+//        Classification cls2 = new Classification(stopWordsList, sjpWordsList);
+//        cls2.loadAndParseFiles(
+//                USER_DIR + "\\resources\\job_ads\\bd_1.txt", 
+//                USER_DIR + "\\resources\\job_ads\\bd_2.txt", 
+//                USER_DIR + "\\resources\\job_ads\\bd_3.txt" );
+       
+        
     }
     
     private static  List<List<String>> loadSjpWords(String sjpWordsPath) throws FileNotFoundException, IOException {
